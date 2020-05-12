@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CI_TEST</string>
+    <string name="title">title</string>
+    <string name="id">id</string>
+
+    <string name="button_ok">確定</string>
+    <string name="text_loadDelay">請稍等</string>
+    <string name="text_errNullBody">資料讀取錯誤，請重新開啟軟體</string>
+    <string name="text_TitleDefault">測驗</string>
+    <string name="text_homeTitle">首頁</string>
+    <string name="text_flowTitle">照片牆</string>
+    <string name="text_timeout">網路逾時 請稍等</string>
+    <string name="text_unknowError">發生不明錯誤</string>
+
+</resources>

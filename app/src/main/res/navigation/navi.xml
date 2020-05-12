@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi"
+    app:startDestination="@id/hostFragment">
+    <fragment
+        android:id="@+id/hostFragment"
+        android:name="com.evan.ci_test.ui.fg.HomeFragment"
+        android:label="fragment_host"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_hostFragment_to_flowFragment2"
+            app:destination="@id/flowFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/flowFragment2"
+        android:name="com.evan.ci_test.ui.fg.FlowFragment"
+        android:label="fragment_flow"
+        tools:layout="@layout/fragment_flow" />
+</navigation>
