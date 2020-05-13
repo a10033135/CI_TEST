@@ -49,14 +49,6 @@ public class LoadingDialog extends DialogFragment {
         if (drawable instanceof AnimatedVectorDrawable) {
             final AnimatedVectorDrawable avd = (AnimatedVectorDrawable) drawable;
             avd.start();
-            avd.registerAnimationCallback(new Animatable2.AnimationCallback() {
-                @Override
-                public void onAnimationEnd(Drawable drawable) {
-                    avd.start();
-                    if (getActivity() != null)
-                        binding.loadTv.setText(getActivity().getString(R.string.text_timeout));
-                }
-            });
         }
 
 
