@@ -26,13 +26,11 @@
 
         <Button
             android:id="@+id/bt_Confirm"
-            style="@style/ButtonRed"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/button_ok"
-             />
+            android:text="@string/button_ok" />
 
     </LinearLayout>
 

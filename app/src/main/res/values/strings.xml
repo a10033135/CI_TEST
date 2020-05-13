@@ -11,5 +11,6 @@
     <string name="text_flowTitle">照片牆</string>
     <string name="text_timeout">網路逾時 請稍等</string>
     <string name="text_unknowError">發生不明錯誤</string>
+    <string name="text_noInternet" type="id">目前沒有網路</string>
 
 </resources>
