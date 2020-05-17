@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class PicFlowAdapter extends RecyclerView.Adapter<PicFlowAdapter.GridHolder> {
 
     private List<PhotoDetail> photoDetails;
-    private HashMap<Integer, Bitmap> bitmaps;
+    private HashMap<Integer, Bitmap> bitmaps; /* 避免下載失敗儲存空值，因此使用 HashMap */
     private Context context;
 
 

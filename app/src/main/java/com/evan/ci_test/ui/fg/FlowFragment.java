@@ -72,7 +72,7 @@ public class FlowFragment extends MyFragment {
         binding.picflowRecy.addOnScrollListener(new LoadMoreOnScrollListener(layoutManager) {
             @Override
             public void onLoadMore(final int currentPage) {
-                if (currentPage > 1) {
+                if (currentPage > 1) { /* 避開判斷第一頁 */
                     MyDialog.showLoadingPage(mFragment);
                     new Thread(new Runnable() {
                         @Override
@@ -82,8 +82,8 @@ public class FlowFragment extends MyFragment {
                                 activity.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        flowAdapter.setPhotoDetails(subPhotoDetails(currentPage));
-                                        flowAdapter.notifyDataSetChanged();
+                                        flowAdapter.setPhotoDetails(subPhotoDetails(currentPage)); /* 更新使用的資料 */
+                                        flowAdapter.notifyDataSetChanged(); /* 提醒重新加載 */
                                         MyDialog.closeLoadingPage();
                                     }
                                 });
@@ -100,6 +100,9 @@ public class FlowFragment extends MyFragment {
 
     private void loadData() {
         MyDialog.showLoadingPage(mFragment); /* 加載畫面 */
+
+        if(!NetWork.networkConnected(activity))
+            MyDialog.showErrDialog(this,"沒有網路");
 
         /* 開始下載資料 */
         NetWork.getApiService().getDetails().enqueue(new Callback<List<PhotoDetail>>() {
