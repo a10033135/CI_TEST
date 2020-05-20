@@ -24,6 +24,8 @@ public class LoadingDialog extends DialogFragment {
         return new LoadingDialog();
     }
 
+    private LoadingDialog() { }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_TransparentWindow);
@@ -44,7 +46,7 @@ public class LoadingDialog extends DialogFragment {
     }
 
     public void aniVector() {
-        Drawable drawable = binding.loadProgressBar.getDrawable();
+        Drawable drawable = binding.loadProgress.getDrawable();
 
         if (drawable instanceof AnimatedVectorDrawable) {
             final AnimatedVectorDrawable avd = (AnimatedVectorDrawable) drawable;

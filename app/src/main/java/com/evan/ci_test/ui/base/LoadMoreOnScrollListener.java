@@ -1,24 +1,31 @@
 package com.evan.ci_test.ui.base;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class LoadMoreOnScrollListener extends RecyclerView.OnScrollListener {
 
-    private GridLayoutManager manager;
     private int currentPage = 1; /* 總共頁數 */
     private int previousTotal = 0; /* 上一個 total Item 個數 */
     private boolean loading = true; /* 是否加載畫面 */
+    private GridLayoutManager manager;
 
-    public LoadMoreOnScrollListener(GridLayoutManager manager) {
+    public void initListener(){
+        currentPage = 1;
+        previousTotal = 0;
+        loading = true;
+    }
+
+    protected LoadMoreOnScrollListener(GridLayoutManager manager) {
         this.manager = manager;
     }
 
     @Override
-    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
 
-        int visibleItemCount = recyclerView.getChildCount(); /* 螢幕上可見的 item 個數 */
+        int visibleItemCount = manager.getChildCount(); /* 螢幕上可見的 item 個數 */
         int totalItemCount = manager.getItemCount(); /* item 總數 */
         int firstVisibleItem = manager.findFirstVisibleItemPosition(); /* 第一個可見 item，意思是已經被回收的 item 們，原則上 first + visible = total*/
 
@@ -31,7 +38,7 @@ public abstract class LoadMoreOnScrollListener extends RecyclerView.OnScrollList
         }
 
         /* 會隨著拉滑加載，最終會變得 total - visible = first ，就等於是拉到最底了，就可以來個 Loading */
-        if (!loading && totalItemCount - visibleItemCount <= firstVisibleItem) {
+        if (!loading && totalItemCount <= visibleItemCount + firstVisibleItem) {
             currentPage++;
             onLoadMore(currentPage); /* 第幾頁時加載資訊 */
             loading = true;

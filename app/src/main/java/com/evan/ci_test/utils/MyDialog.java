@@ -15,12 +15,14 @@ public class MyDialog {
     private static DialogFragment dialog;
     private static List<DialogFragment> listDialog = new ArrayList<>();
 
+    /* 錯誤提示畫面 */
     public static void showErrDialog(Fragment fragment, String msg) {
         close();
         dialog = ErrDialog.newInstance(msg);
         show(fragment, Common.REQ_DIALOG_DEFAULT, false);
     }
 
+    /* 加載畫面 */
     public static void showLoadingPage(Fragment fg) {
 
         if (fg == null)
@@ -62,8 +64,6 @@ public class MyDialog {
         dialog.setCancelable(cancelable);
         listDialog.add(dialog);
         dialog = null;
-
-
     }
 
 

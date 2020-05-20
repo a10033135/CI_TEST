@@ -17,6 +17,8 @@ public class ErrDialog extends DialogFragment implements View.OnClickListener {
 
     private DialogErrBinding binding;
 
+    private ErrDialog() { }
+
     public static ErrDialog newInstance(String msg) {
         Bundle args = new Bundle();
         args.putString("msg", msg);
@@ -43,10 +45,10 @@ public class ErrDialog extends DialogFragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         String err = bundle.getString("msg");
-        binding.btConfirm.setOnClickListener(this);
+        binding.errBtConfirm.setOnClickListener(this);
 
         if (getActivity() != null)
-            binding.tvMsg.setText(err != null ? err : getActivity().getString(R.string.text_unknowError));
+            binding.errTvMsg.setText(err != null ? err : getActivity().getString(R.string.text_unknowError));
 
     }
 

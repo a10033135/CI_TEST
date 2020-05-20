@@ -17,7 +17,7 @@
         android:paddingBottom="10dp">
 
         <TextView
-            android:id="@+id/tv_msg"
+            android:id="@+id/err_tvMsg"
             style="@style/InfoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             tools:text="Error Message" />
 
         <Button
-            android:id="@+id/bt_Confirm"
+            android:id="@+id/err_btConfirm"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

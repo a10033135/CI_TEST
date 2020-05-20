@@ -2,9 +2,9 @@ package com.evan.ci_test.Common;
 
 public class PhotoDetail {
 
-    String id;
-    String title;
-    String thumbnailUrl;
+    private String id;
+    private String title;
+    private String thumbnailUrl;
 
     public PhotoDetail(String id, String title, String thumbnailUrl) {
         this.id = id;

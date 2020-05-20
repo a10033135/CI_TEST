@@ -15,7 +15,6 @@ import com.evan.ci_test.databinding.FragmentHomeBinding;
 import com.evan.ci_test.ui.base.MyFragment;
 import com.evan.ci_test.utils.MyDialog;
 import com.evan.ci_test.utils.NetWork;
-import com.evan.ci_test.utils.Utils;
 
 /* 首頁 */
 public class HomeFragment extends MyFragment {
@@ -29,10 +28,9 @@ public class HomeFragment extends MyFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        return view;
+        return binding.getRoot();
     }
 
     @SuppressLint("ResourceType")
@@ -40,7 +38,7 @@ public class HomeFragment extends MyFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.homeAction.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

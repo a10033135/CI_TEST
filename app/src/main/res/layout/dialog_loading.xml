@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/load_progressBar"
+                android:id="@+id/load_progress"
                 android:layout_width="110dp"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
@@ -39,7 +39,7 @@
                 />
 
             <TextView
-                android:id="@+id/load_tv"
+                android:id="@+id/load_tvMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="加載中"

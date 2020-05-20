@@ -1,30 +1,21 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
-    android:width="108dp"
-    android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
-        <aapt:attr name="android:fillColor">
-            <gradient
-                android:endX="85.84757"
-                android:endY="92.4963"
-                android:startX="42.9492"
-                android:startY="49.59793"
-                android:type="linear">
-                <item
-                    android:color="#44000000"
-                    android:offset="0.0" />
-                <item
-                    android:color="#00000000"
-                    android:offset="1.0" />
-            </gradient>
-        </aapt:attr>
-    </path>
-    <path
-        android:fillColor="#FFFFFF"
-        android:fillType="nonZero"
-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
-        android:strokeWidth="1"
-        android:strokeColor="#00000000" />
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="vector"
+    android:width="150dp"
+    android:height="150dp"
+    android:viewportWidth="150"
+    android:viewportHeight="150">
+    <group android:name="wrapper">
+        <clip-path
+            android:name="clip_ic_launcher_round"
+            android:pathData="M 0 0 L 150 0 L 150 150 L 0 150 Z"/>
+        <group android:name="group">
+
+            <path
+                android:name="path_1"
+                android:pathData="M 39.465 103.465 L 44.162 107.7 C 49.42 102.378 53.442 95.963 55.943 88.912 C 57.943 82.983 58.943 75.591 59.1 66.659 C 65.542 70.55 71.511 75.175 76.887 80.442 L 80.044 75.668 C 73.667 69.935 66.638 64.973 59.1 60.884 L 59.1 45.561 L 86.2 45.561 L 86.2 98.152 C 86.2 103.08 88.818 105.544 94.208 105.544 L 99.444 105.544 C 102.524 105.544 104.834 105.082 106.22 104.158 C 107.764 103 108.765 100.847 109.15 97.767 C 109.62 93.111 109.826 88.432 109.766 83.753 L 104.376 82.136 C 104.376 90.375 104.145 95.457 103.683 97.305 C 103.586 97.791 103.393 98.252 103.116 98.662 C 102.838 99.072 102.481 99.422 102.066 99.692 C 101.028 100.059 99.933 100.242 98.832 100.231 L 94.289 100.231 C 92.595 100.231 91.825 99.307 91.825 97.613 L 91.825 40.171 L 53.479 40.171 L 53.479 65.658 C 53.479 74.282 52.555 81.212 50.861 86.371 C 48.46 92.886 44.556 98.743 39.465 103.465 Z"
+                android:fillColor="#000"
+                android:strokeWidth="1"/>
+        </group>
+    </group>
 </vector>

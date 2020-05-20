@@ -18,8 +18,8 @@ import com.evan.ci_test.utils.NetWork;
 import com.evan.ci_test.utils.Utils;
 
 import java.io.BufferedInputStream;
-import java.util.HashMap;
 import java.util.List;
+import java.util.WeakHashMap;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -30,14 +30,14 @@ import retrofit2.Response;
 public class PicFlowAdapter extends RecyclerView.Adapter<PicFlowAdapter.GridHolder> {
 
     private List<PhotoDetail> photoDetails;
-    private HashMap<Integer, Bitmap> bitmaps; /* 避免下載失敗儲存空值，因此使用 HashMap */
+    private WeakHashMap<String, Bitmap> bitmaps; /* 避免下載失敗儲存空值，因此使用 HashMap */
     private Context context;
 
 
-    public PicFlowAdapter(List<PhotoDetail> photoDetails, Context context) {
+    public PicFlowAdapter(List<PhotoDetail> photoDetails, WeakHashMap<String, Bitmap> bitmaps, Context context) {
         this.photoDetails = photoDetails;
         this.context = context;
-        bitmaps = new HashMap<>();
+        this.bitmaps = bitmaps;
     }
 
     @NonNull
@@ -54,17 +54,16 @@ public class PicFlowAdapter extends RecyclerView.Adapter<PicFlowAdapter.GridHold
         holder.tvTitle.setText(photoDetail.getTitle());
 
         /* 使下載好的圖片暫存於 List ，不因回收而需重新下載圖片 */
-        if (bitmaps.containsKey(position)) {
-            holder.image.setImageBitmap(bitmaps.get(position));
+        if (bitmaps.containsKey(photoDetail.getThumbnailUrl())) {
+            Bitmap bitmap = bitmaps.get(photoDetail.getThumbnailUrl());
+            holder.image.setImageBitmap(bitmap);
         } else {
             holder.image.setImageDrawable(context.getDrawable(R.drawable.image_default));
-            loadData(position, photoDetail.getThumbnailUrl(), holder);
+            loadData(photoDetail.getThumbnailUrl(), holder);
         }
     }
 
-
-    private void loadData(final int position, final String url, final GridHolder holder) {
-
+    private void loadData(final String url, final GridHolder holder) {
         NetWork.getApiService().getImage(url).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -73,13 +72,13 @@ public class PicFlowAdapter extends RecyclerView.Adapter<PicFlowAdapter.GridHold
 
                 ResponseBody body = response.body();
                 Bitmap bitmap = BitmapFactory.decodeStream(new BufferedInputStream(body.byteStream()));
-                bitmaps.put(position, bitmap); /* 將下載好的圖片存入 List ，供未來使用 */
+                bitmaps.put(url, bitmap); /* 將下載好的圖片存入 List ，供未來使用 */
                 holder.image.setImageBitmap(bitmap);
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                loadData(position, url, holder);
+                loadData(url, holder);
                 /* 若下載失敗，再重新執行下載 */
             }
         });
@@ -94,18 +93,21 @@ public class PicFlowAdapter extends RecyclerView.Adapter<PicFlowAdapter.GridHold
         this.photoDetails = photoDetails;
     }
 
-    public class GridHolder extends RecyclerView.ViewHolder {
-        public TextView tvTitle;
-        public TextView tvId;
-        public ImageView image;
-        public SquareRelativeLayout layout;
+    public PicFlowAdapter setBitmaps(WeakHashMap<String, Bitmap> bitmaps) {
+        this.bitmaps = bitmaps;
+        return this;
+    }
 
-        public GridHolder(RowPicflowBinding binding) {
+    public class GridHolder extends RecyclerView.ViewHolder {
+        private TextView tvTitle;
+        private TextView tvId;
+        private ImageView image;
+
+        private GridHolder(RowPicflowBinding binding) {
             super(binding.getRoot());
             image = binding.rowImage;
             tvId = binding.rowTvId;
             tvTitle = binding.rowTvTitle;
-            layout = binding.rowCsLayout;
         }
     }
 }
